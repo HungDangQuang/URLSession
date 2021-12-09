@@ -15,10 +15,8 @@ class ViewModel {
         fetchData()
     }
     func fetchData(){
-        apiService.getAllProducts(withURL: "https://jsonplaceholder.typicode.com/posts") { dict in
-//            self.title.value = dict[9] as Any
-            self.subTitle.value = dict[1] as! String
-            
+        apiService.getAllPosts(withURLRequest: URLRequest(url: URL(string: "https://jsonplaceholder.typicode.com/posts")!)) { dict in
+            self.subTitle.value = dict[1]!.title
         }
     }
 }

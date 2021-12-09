@@ -9,8 +9,9 @@ import UIKit
 import Combine
 class ViewController: UIViewController {
     
-    @IBOutlet weak var lblTitle: UILabel!
     
+    
+    @IBOutlet weak var lblTitle: UILabel!
     var cancellable: AnyCancellable?
     let viewModel = ViewModel()
     override func viewDidLoad() {
@@ -35,6 +36,21 @@ class ViewController: UIViewController {
 //            print(dict)
 //        }
 
+//        viewModel.subTitle.bind { data in
+//            DispatchQueue.main.async {
+//                self.lblTitle.text = data
+//            }
+//        }
+        
+//        let apiService = QueryService()
+//        apiService.getAllPosts(withURLRequest: URLRequest(url: URL(string: "https://jsonplaceholder.typicode.com/posts")!)) { dict in
+//            print(dict[1] as Any)
+//        }
+        
+//        apiService.getAllProducts(withURL: "https://jsonplaceholder.typicode.com/posts") { dict in
+//            print(dict[1])
+//        }
+        
         viewModel.subTitle.bind { data in
             DispatchQueue.main.async {
                 self.lblTitle.text = data
