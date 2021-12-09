@@ -18,7 +18,7 @@ struct Post: Codable {
     let __v: Int
 }
 
-struct Posts: Codable {
+struct Posts: Decodable {
     let userId: Int
     let id: Int
     let title: String

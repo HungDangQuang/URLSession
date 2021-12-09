@@ -19,4 +19,8 @@ class ViewModel {
             self.subTitle.value = dict[1]!.title
         }
     }
+    
+    func loadPost(completion:@escaping (Dictionary<String, [Posts]>)-> Void){
+        apiService.getPosts(with: URLRequest(url: URL(string: "https://jsonplaceholder.typicode.com/posts")!), completion: completion)
+    }
 }

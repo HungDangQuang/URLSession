@@ -51,11 +51,15 @@ class ViewController: UIViewController {
 //            print(dict[1])
 //        }
         
-        viewModel.subTitle.bind { data in
-            DispatchQueue.main.async {
-                self.lblTitle.text = data
-            }
+        viewModel.loadPost { dict in
+            print(dict)
         }
+        
+//        viewModel.subTitle.bind { data in
+//            DispatchQueue.main.async {
+//                self.lblTitle.text = data
+//            }
+//        }
         
     }
 
