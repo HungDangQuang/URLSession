@@ -23,4 +23,9 @@ class ViewModel {
     func loadPost(completion:@escaping (Dictionary<String, [Posts]>)-> Void){
         apiService.getPosts(with: URLRequest(url: URL(string: "https://jsonplaceholder.typicode.com/posts")!), completion: completion)
     }
+    
+    func loadData(completion:@escaping (Dictionary<String, [Posts]>)-> Void){
+        apiService.getPosts(with: .getPosts, completion: completion)
+    }
+    
 }
