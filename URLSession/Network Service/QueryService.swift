@@ -9,11 +9,12 @@ import Foundation
 import Combine
 
 enum ApiRouter {
-    case getPosts
     
-    func getURL(requestCase: ApiRouter) -> URLRequest {
-        switch requestCase {
-        case .getPosts:
+   case getPostLink
+    
+    func get() -> URLRequest {
+        switch self{
+        case .getPostLink:
             return URLRequest(url: URL(string: "https://jsonplaceholder.typicode.com/posts")!)
         }
     }
@@ -72,13 +73,12 @@ class QueryService {
             })
     }
     
-    func getPosts<T: Decodable>(with urlReq: ApiRouter, completion:@escaping(Dictionary<String, [T]>)-> Void){
+    func getPosts<T: Decodable>(with router: ApiRouter, completion:@escaping(Dictionary<String, [T]>)-> Void){
         
         let configuration = eConfig()
-        let urlRequest = urlReq.getURL(requestCase: urlReq)
         
         let session = URLSession(configuration: configuration)
-        cancellable = session.dataTaskPublisher(for: urlRequest)
+        cancellable = session.dataTaskPublisher(for: router.get())
         
             .tryMap({ output in
                 guard let response = output.response as? HTTPURLResponse, response.statusCode == 200 else {
